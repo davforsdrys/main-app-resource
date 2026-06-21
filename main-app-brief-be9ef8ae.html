@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 再叙片刻</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5faf9;
+      color: #1a2e2e;
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    /* 开场 Hero */
+    .hero {
+      background: linear-gradient(145deg, #dcefea, #c5e3db);
+      border-radius: 2.5rem;
+      padding: 3.5rem 2.5rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 8px 24px rgba(60, 130, 110, 0.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      width: 180px;
+      height: 180px;
+      background: rgba(90, 170, 150, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-weight: 550;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: #0d3d3d;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 680px;
+      color: #2d554e;
+    }
+
+    /* 承接段 */
+    .message {
+      background: white;
+      padding: 2.2rem 2.5rem;
+      border-radius: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #d7ede7;
+    }
+
+    .message p {
+      font-size: 1.08rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .message p:last-child {
+      margin-bottom: 0;
+    }
+
+    .soft-link {
+      color: #167a67;
+      text-decoration: none;
+      border-bottom: 1px solid #b5d7ce;
+      transition: border-color 0.2s, color 0.2s;
+      font-weight: 460;
+    }
+
+    .soft-link:hover {
+      color: #0c5245;
+      border-bottom-color: #167a67;
+    }
+
+    /* 网格卡片 — 特点 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem 1.2rem 1.8rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(70, 140, 120, 0.06);
+      border: 1px solid #d7ede7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(60, 130, 110, 0.10);
+    }
+
+    .card .emoji {
+      font-size: 1.8rem;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 520;
+      color: #0c4f45;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #2b4f48;
+      line-height: 1.6;
+    }
+
+    /* 温和结尾 + 收藏提示 */
+    .closing {
+      background: #dcefea;
+      border-radius: 2rem;
+      padding: 2.5rem 2.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .closing-text {
+      flex: 2;
+      min-width: 220px;
+    }
+
+    .closing-text p {
+      font-size: 1.1rem;
+      color: #12453d;
+    }
+
+    .closing-text .small-note {
+      font-size: 0.9rem;
+      color: #2e6b5b;
+      margin-top: 0.4rem;
+    }
+
+    .bookmark-box {
+      flex: 1;
+      min-width: 150px;
+      text-align: right;
+    }
+
+    .bracket-label {
+      display: inline-block;
+      background: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 3rem;
+      font-size: 0.95rem;
+      color: #12453d;
+      border: 1px solid #b3d4c8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .bracket-label span {
+      font-weight: 480;
+    }
+
+    .footer-meta {
+      margin-top: 2.8rem;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #59867a;
+      border-top: 1px solid #cfe3db;
+      padding-top: 2rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* 移动端 */
+    @media (max-width: 640px) {
+      .page {
+        padding: 1.2rem 1rem 2.5rem;
+      }
+
+      .hero {
+        padding: 2.5rem 1.6rem;
+        border-radius: 1.8rem;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+      }
+
+      .message {
+        padding: 1.6rem 1.5rem;
+      }
+
+      .feature-grid {
+        gap: 1.2rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card {
+        padding: 1.4rem 1rem;
+      }
+
+      .closing {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.6rem;
+      }
+
+      .bookmark-box {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 开场 Hero -->
+  <section class="hero">
+    <h1>再次遇见 · 爱游戏</h1>
+    <p>有些角落值得重返，有些陪伴自然沉淀。<br>
+    这里没有喧闹的入口，只有一片安静的绿意。</p>
+  </section>
+
+  <!-- 承接段落：从再次访问、收藏与关注切入 -->
+  <div class="message">
+    <p>
+      你也许在某个午后来过这里，翻过几页游戏故事，又轻轻离开。后来偶尔想起，却发现书签栏里少了一个名字。<br>
+      其实，许多有趣的事物不需要刻意记住，却值得放一枚温柔的记号。<strong>爱游戏</strong> 就是这样一个位置——不打扰，不催促，等你某天顺着记忆折返。
+    </p>
+    <p>
+      收藏夹或笔记里留一行 <a href="https://main-app-i-game.com.cn" class="soft-link">爱游戏</a>，不必担心下次忘记。页面很轻，加载快，没有多余的弹窗或催促。你可以在任何浏览器里打开它，像翻开一本留在桌角的杂志。
+    </p>
+    <p>
+      持续关注一个地方，有时不是因为内容有多澎湃，而是那里保持着让人放松的节奏。偶尔想起时，去看一眼新内容，或者只是安静待一会儿，都很好。
+    </p>
+  </div>
+
+  <!-- 特点列表（网格卡片） -->
+  <div class="feature-grid">
+    <div class="card">
+      <div class="emoji">🕊️</div>
+      <h3>干净界面</h3>
+      <p>没有悬浮广告或强制推送，信息以温和的卡片呈现，读起来像朋友写的便签。</p>
+    </div>
+    <div class="card">
+      <div class="emoji">📁</div>
+      <h3>适合收藏</h3>
+      <p>页面结构稳定，不依赖复杂脚本。你可以放心加入书签，下次打开还是熟悉的模样。</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🌱</div>
+      <h3>内容细水长流</h3>
+      <p>游戏推荐与随想隔段时间更新，不追热点，不制造焦虑。像一本私人发行的小册子。</p>
+    </div>
+    <div class="card">
+      <div class="emoji">📱</div>
+      <h3>移动端友好</h3>
+      <p>在手机浏览器上缩放自如，卡片自动换行，阅读体验自然连贯。</p>
+    </div>
+  </div>
+
+  <!-- 温和结尾 + 收藏提示 -->
+  <div class="closing">
+    <div class="closing-text">
+      <p>如果你愿意，可以把 <a href="https://main-app-i-game.com.cn" class="soft-link">爱游戏</a> 放进浏览器的书签栏，或者记在备忘录的一个角落。</p>
+      <p class="small-note">不是每个网站都需要每天打开，有些地方是用来「偶尔回来」的。</p>
+    </div>
+    <div class="bookmark-box">
+      <div class="bracket-label">
+        <span>🔖 下次再见</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 简短的 FAQ 摘要  -->
+  <div class="footer-meta">
+    <span>❓ 常见小问 · 页面会频繁变化吗？</span>
+    <span style="display:inline-block; margin-left:0.8rem;">不会，更新平缓，内容一直保持安静风格。</span>
+  </div>
+</div>
+</body>
+</html>
