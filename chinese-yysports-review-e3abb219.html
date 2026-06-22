@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>易游体育 · 一站式体育服务平台介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1e2b3a;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 780px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0, 30, 20, 0.06);
+      padding: 2.4rem 1.8rem 3rem;
+      transition: padding 0.2s;
+    }
+
+    /* 网格背景卡片 */
+    .intro-card {
+      background: #ffffff;
+      border: 1px solid #d9e8ed;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0,40,30,0.03);
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(0, 180, 160, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 130, 140, 0.02) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.2rem 0 1.6rem;
+    }
+
+    .grid-item {
+      background: #f0f7fa;
+      border-radius: 16px;
+      padding: 1rem 0.9rem;
+      border-left: 4px solid #1f9a8f;
+      font-size: 0.95rem;
+      transition: all 0.15s ease;
+    }
+
+    .grid-item strong {
+      display: block;
+      color: #095a55;
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+    }
+
+    .grid-item span {
+      color: #2a4b56;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #003d33;
+      border-left: 6px solid #1f9a8f;
+      padding-left: 1rem;
+      margin: 0 0 0.8rem 0;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      color: #3f636b;
+      font-size: 1.05rem;
+      border-bottom: 1px solid #d4e5e9;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.6rem;
+      font-weight: 400;
+    }
+
+    p {
+      margin-bottom: 1.3rem;
+    }
+
+    .accent-link {
+      color: #1a7e73;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px dotted #7bbdb5;
+      transition: border 0.15s, color 0.15s;
+    }
+
+    .accent-link:hover {
+      color: #0e5b52;
+      border-bottom: 1.5px solid #0e5b52;
+    }
+
+    .quote-block {
+      background: #e4f3f0;
+      border-radius: 18px;
+      padding: 1.3rem 1.6rem;
+      margin: 2rem 0 1.8rem;
+      border-left: 5px solid #1f9a8f;
+      font-style: normal;
+      color: #1f3f42;
+    }
+
+    .quote-block p {
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-mini {
+      margin-top: 2.2rem;
+      background: #f5fbfd;
+      padding: 1.5rem 1.4rem;
+      border-radius: 20px;
+      border: 1px solid #d2e5e8;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #07534b;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-item {
+      display: flex;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-q {
+      min-width: 5.8rem;
+      font-weight: 500;
+      color: #0b5c53;
+    }
+
+    .faq-a {
+      color: #294d51;
+    }
+
+    .visit-hint {
+      text-align: center;
+      margin: 2.6rem 0 0;
+      padding: 1.2rem 0.8rem;
+      background: #edf6f5;
+      border-radius: 36px;
+      font-size: 1rem;
+      color: #16534c;
+      border: 1px solid #c6dfda;
+    }
+
+    .visit-hint a {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #cfe2e6;
+      margin: 2rem 0 1rem;
+    }
+
+    .footer-note {
+      color: #657f84;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 550px) {
+      body { padding: 1rem 0.8rem; }
+      .page { padding: 1.6rem 1rem; }
+      h1 { font-size: 1.5rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid-item { padding: 0.8rem; }
+      .faq-item { flex-direction: column; }
+      .faq-q { min-width: auto; margin-bottom: 0.2rem; }
+    }
+
+    @media (min-width: 780px) {
+      .page { padding: 3rem 2.8rem; }
+      .grid-item { padding: 1.2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>易游体育 · 用途速览</h1>
+  <div class="subhead">一个以赛事数据、场地工具、运动社区为核心的轻量型平台</div>
+
+  <!-- 简介段落 + 链接自然嵌入 -->
+  <div class="intro-card">
+    <p>许多使用者初次来到 <a href="https://chinese-yysports.com" class="accent-link">易游体育</a> 时，最直接的诉求是：快速判断这里提供什么、是否解决自己的运动相关需求。站点以体育信息整合为基础，围绕「查赛事、找场地、看资讯、聊运动」四个模块展开，不堆砌功能，侧重实用与可读性。</p>
+    <p>无论你是想了解本地业余联赛的赛程，还是希望找到一片适合夜跑的塑胶跑道，亦或只想看看近期的运动圈讨论——这个站点都试图提供一个低门槛的入口。下面通过几个卡片快速概括其核心覆盖域。</p>
+  </div>
+
+  <!-- 网格卡片：关键特点 -->
+  <div class="hero-grid">
+    <div class="grid-item">
+      <strong>赛事动态</strong>
+      <span>收录多项大众赛事日程、积分榜与简要战报，更新节奏偏实用</span>
+    </div>
+    <div class="grid-item">
+      <strong>场地指引</strong>
+      <span>按区域整理公共体育场馆、社区健身点、合作球场基础信息</span>
+    </div>
+    <div class="grid-item">
+      <strong>运动资讯</strong>
+      <span>训练贴士、运动防护、赛事解读，内容偏简洁，不水篇幅</span>
+    </div>
+    <div class="grid-item">
+      <strong>社区互动</strong>
+      <span>轻量讨论区，可发起约球、装备交流、经验分享，氛围较务实</span>
+    </div>
+  </div>
+
+  <!-- 多段正文 -->
+  <p>对于初次访问者，一个常见的困惑是：网站是否只聚焦某一项运动？从当前结构看，<a href="https://chinese-yysports.com" class="accent-link">易游体育</a> 覆盖运动类型较广，但并非大而全的百科，而是以「高频参与型运动」为主线——足球、篮球、跑步、羽毛球、骑行等出现频率更高。信息组织上侧重区域化（以国内城市为粒度），方便用户按所在地筛选。</p>
+
+  <p>在交互层面，站点没有过度设计，主要采用列表、标签、卡片式浏览，降低认知负担。移动端适配良好，尤其在场地方向的页面中，点击可直接跳转地图或导航，省去二次搜索。若你习惯快速浏览而非深度挖掘，这种克制的结构会比较顺手。</p>
+
+  <!-- 引用提示块 -->
+  <div class="quote-block">
+    <p><strong>提示</strong> · 如果你正在寻找某个特定赛事的报名入口或场馆预约链接，建议优先使用站内搜索或按分类筛选。部分场馆信息由用户提交，前往前最好电话确认开放时间。—— 来自社区使用经验</p>
+  </div>
+
+  <!-- 后面加一段场景化描述 -->
+  <p>举个例子：周末想约朋友打羽毛球，但不确定附近有哪些球馆可订、是否提供球具租借。在 <a href="https://chinese-yysports.com" class="accent-link">易游体育</a> 的「场地」板块中，可以按区域查看球馆列表、看其他用户留下的简评与实拍，部分场地标注了联系方式。虽然不是全覆盖，但城市核心区数据量尚可，尤其对于非一线城市的用户来说，这个聚合视角有一定价值。</p>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3>常见疑问 · 摘要</h3>
+    <div class="faq-item">
+      <span class="faq-q">内容来源？</span>
+      <span class="faq-a">平台编辑整理 + 用户贡献，标注来源，不照搬其他站点。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">需要注册吗？</span>
+      <span class="faq-a">浏览大部分信息无需登录；参与讨论或提交场地需注册（邮箱/手机）。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">更新频率？</span>
+      <span class="faq-a">赛事页面在赛季期间每周更新；场地与资讯板块持续补充，无固定周期。</span>
+    </div>
+  </div>
+
+  <!-- 访问句 / 提示行，自然带链接 -->
+  <div class="visit-hint">
+    如果你对运动信息聚合或本地体育资源感兴趣，可以将 <a href="https://chinese-yysports.com" class="accent-link">易游体育</a> 加入书签，作为日常查询的起点之一。
+  </div>
+
+  <hr>
+
+  <div class="footer-note">
+    页面仅为用途介绍 · 内容基于实际使用体验概括
+  </div>
+
+</div>
+</body>
+</html>
