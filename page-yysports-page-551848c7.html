@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>易游体育 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f1f7fa;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* 网格卡片容器 */
+    .grid-intro {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 1.5rem 1.8rem;
+      box-shadow: 0 12px 32px rgba(0, 60, 70, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(40, 130, 140, 0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(0, 90, 100, 0.10);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+      color: #0d4e57;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card h3::before {
+      content: "▣";
+      font-size: 1.1rem;
+      color: #2b9caa;
+    }
+
+    .card p, .card li {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: #1a3a40;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card li {
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #2b9caa;
+      font-weight: 700;
+    }
+
+    /* Hero —— 简洁引导区 */
+    .hero-brief {
+      background: linear-gradient(145deg, #e7f3f5 0%, #d3e9ec 100%);
+      border-radius: 40px;
+      padding: 2.8rem 2.5rem;
+      margin: 0 0 1.8rem 0;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 8px 18px rgba(30, 90, 100, 0.06);
+    }
+
+    .hero-brief h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      color: #043840;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-brief .sub {
+      font-size: 1.05rem;
+      color: #1d5b64;
+      max-width: 640px;
+      line-height: 1.6;
+      margin-bottom: 1.6rem;
+      font-weight: 400;
+    }
+
+    .hero-brief .meta-tag {
+      display: inline-block;
+      background: #ffffffc0;
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      color: #176a76;
+      border: 1px solid #b1d4da;
+    }
+
+    /* 提示区 & 相关信息 */
+    .info-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .notice-box {
+      background: #f5fafc;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      border-left: 5px solid #2b9caa;
+      box-shadow: 0 6px 16px rgba(0, 60, 70, 0.03);
+    }
+
+    .notice-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #043840;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .notice-box h4 span {
+      background: #176a76;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+    }
+
+    .notice-box p, .notice-box li {
+      font-size: 0.96rem;
+      color: #163e46;
+      line-height: 1.7;
+    }
+
+    .notice-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .notice-box li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+
+    .notice-box li::before {
+      content: "▹";
+      color: #2b9caa;
+      position: absolute;
+      left: 0;
+      font-weight: 500;
+    }
+
+    .related-links {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #d4e5e9;
+    }
+
+    .related-links h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #043840;
+      margin-bottom: 1.2rem;
+    }
+
+    .related-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed #cbdde2;
+    }
+
+    .related-item:last-child {
+      border-bottom: none;
+    }
+
+    .related-item .tag {
+      background: #d8eef2;
+      color: #0c535e;
+      padding: 0.15rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .related-item .desc {
+      color: #1a4b54;
+      font-size: 0.95rem;
+    }
+
+    /* 单行链接自然嵌入 */
+    .inline-link-wrap {
+      margin: 2rem 0 0.8rem;
+      background: #e4f0f3;
+      border-radius: 60px;
+      padding: 0.8rem 1.8rem;
+      display: inline-block;
+      font-size: 0.95rem;
+      color: #043840;
+    }
+
+    a {
+      color: #166f7c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #bbd9df;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #0b4752;
+      color: #0b4752;
+    }
+
+    /* 底部 */
+    .foot-note {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #cde0e4;
+      font-size: 0.85rem;
+      color: #426a72;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .hero-brief {
+        padding: 2rem 1.5rem;
+      }
+      .hero-brief h1 {
+        font-size: 1.8rem;
+      }
+      .info-stack {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .grid-intro {
+        gap: 1.4rem;
+      }
+      .card {
+        padding: 1.6rem 1.3rem;
+      }
+      .notice-box, .related-links {
+        padding: 1.4rem 1.3rem;
+      }
+      .inline-link-wrap {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .hero-brief h1 {
+        font-size: 1.5rem;
+      }
+      .card h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Hero 简明指南式 -->
+    <div class="hero-brief">
+      <h1>运动数据 · 知识索引</h1>
+      <div class="sub">
+        围绕体育信息、赛事与活动场景，沉淀可查阅的结构化笔记。<br>
+        从术语辨析到平台使用要点，聚合为轻量知识库入口。
+      </div>
+      <span class="meta-tag">📘 持续整合 · 简明指引</span>
+    </div>
+
+    <!-- 网格卡片 —— 目录感布局 -->
+    <div class="grid-intro">
+      <div class="card">
+        <h3>平台速览</h3>
+        <p>了解 <a href="https://page-yysports.com">易游体育</a> 所提供的内容分类与信息组织方式。适合初次接触时快速定位常见功能模块与查询路径。</p>
+      </div>
+      <div class="card">
+        <h3>术语与场景</h3>
+        <ul>
+          <li>赛事数据表述：积分、盘口、走势图基础阅读</li>
+          <li>运动项目分类索引：足球、篮球、网球、电竞等</li>
+          <li>平台筛选与排序逻辑简介</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>使用备忘</h3>
+        <ul>
+          <li>信息更新时段与数据延迟说明</li>
+          <li>多终端适配：移动端与桌面端布局差异</li>
+          <li>偏好设置与提醒功能概览</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 说明区 + 提示区 / 相关信息区 用 info-stack 两栏 -->
+    <div class="info-stack">
+      <!-- 左边：提示区 + 说明区合并（访问提醒 & 使用提示） -->
+      <div class="notice-box">
+        <h4>📌 访问提醒 <span>提示</span></h4>
+        <ul>
+          <li>建议使用最新版 Chrome、Edge 或 Safari 浏览器，以获得完整排版与交互。</li>
+          <li>部分页面内容基于实时数据聚合，加载时请保持网络通畅。</li>
+          <li>如遇到信息显示异常，可尝试清除浏览器缓存或稍后重试。</li>
+          <li>站内搜索支持关键词匹配，可快速定位相关主题条目。</li>
+        </ul>
+        <p style="margin-top: 1.2rem;">更多说明请参考 <a href="https://page-yysports.com">易游体育</a> 内的帮助分区。</p>
+      </div>
+
+      <!-- 右边：相关信息区 + FAQ 摘要 -->
+      <div class="related-links">
+        <h4>📎 相关信息</h4>
+        <div class="related-item">
+          <span class="tag">FAQ</span>
+          <span class="desc">「数据更新时间隔多久？」—— 通常为每 30–60 秒轮询。</span>
+        </div>
+        <div class="related-item">
+          <span class="tag">导览</span>
+          <span class="desc">左侧导航栏收纳热门运动与即时比分入口。</span>
+        </div>
+        <div class="related-item">
+          <span class="tag">账户</span>
+          <span class="desc">登录后可保存个人关注列表与偏好筛选。</span>
+        </div>
+        <div class="related-item">
+          <span class="tag">兼容</span>
+          <span class="desc">部分旧版浏览器可能无法正常渲染动态图表。</span>
+        </div>
+        <div class="related-item" style="border-bottom: none;">
+          <span class="tag">参考</span>
+          <span class="desc">使用前可浏览平台术语表，减少理解偏差。</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子（非独立按钮） -->
+    <div class="inline-link-wrap">
+      📖 本页作为知识库索引，更完整内容可直接在 <a href="https://page-yysports.com">易游体育</a> 中查阅各个分类。
+    </div>
+
+    <!-- 底部 -->
+    <div class="foot-note">
+      <span>知识库入口 · 内容持续修订</span>
+      <span>指南版本 1.0 · 基于公开资料整理</span>
+    </div>
+
+  </div>
+</body>
+</html>
